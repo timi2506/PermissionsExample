@@ -1,0 +1,15 @@
+{
+  "originHash" : "41d6097febf80167c715a335ca0f6f7c82e75a3bb7852f1c083028a2c5c745fb",
+  "pins" : [
+    {
+      "identity" : "permissions",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/timi2506/Permissions.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "4bcbb0148ae3b2f90ad88f6567bae9c785fb1db4"
+      }
+    }
+  ],
+  "version" : 3
+}
