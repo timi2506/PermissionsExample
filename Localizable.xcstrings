@@ -1,6 +1,39 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+      "shouldTranslate" : false
+    },
+    "Bluetooth" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bluetooth"
+          }
+        }
+      }
+    },
+    "Camera" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kamera"
+          }
+        }
+      }
+    },
+    "Contacts" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kontakte"
+          }
+        }
+      }
+    },
     "Deselect All" : {
       "localizations" : {
         "de" : {
@@ -11,12 +44,62 @@
         }
       }
     },
+    "Location at all Times" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Standort jederzeit"
+          }
+        }
+      }
+    },
+    "Location when in Use" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Standort bei Nutzung"
+          }
+        }
+      }
+    },
+    "Microphone" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mikrofon"
+          }
+        }
+      }
+    },
+    "Notifications" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Benachrichtigungen"
+          }
+        }
+      }
+    },
     "Open Sheet" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sheet öffnen"
+          }
+        }
+      }
+    },
+    "Photo Library" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fotos"
           }
         }
       }
@@ -47,6 +130,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Berechtigungstypen auswählen"
+          }
+        }
+      }
+    },
+    "Skip if already Granted" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Überspringen wenn bereits Zugelassen"
           }
         }
       }

@@ -10,16 +10,20 @@ import Permissions
 import Combine
 import CoreBluetooth
 struct ContentView: View {
+    var allPermissions: [PermissionType] {
+        return PermissionType.allCases
+    }
     @StateObject var permissionsManager = PermissionsManager.shared
     @State var permissionStates: [PermissionType: Bool] = [:]
     @State var selectedStates: Set<PermissionType> = []
     @State var showSheet = false
     @State var isRefreshing = false
+    @AppStorage("skipGranted") var skipGranted = false
     var body: some View {
         NavigationView {
             List {
                 Section {
-                    if selectedStates == Set(PermissionType.allCases) {
+                    if selectedStates == Set(allPermissions) {
                         Button("Deselect All") {
                             withAnimation {
                                 selectedStates = []
@@ -28,11 +32,11 @@ struct ContentView: View {
                     } else {
                         Button("Select All") {
                             withAnimation {
-                                selectedStates = Set(PermissionType.allCases)
+                                selectedStates = Set(allPermissions)
                             }
                         }
                     }
-                    ForEach(PermissionType.allCases.sorted(by: { $0.rawValue.localizedCompare($1.rawValue) == .orderedAscending }), id: \.rawValue) { type in
+                    ForEach(allPermissions.sorted(by: { $0.rawValue.localizedCompare($1.rawValue) == .orderedAscending }), id: \.rawValue) { type in
                         Button(action: {
                             if selectedStates.contains(type) {
                                 selectedStates.remove(type)
@@ -77,6 +81,7 @@ struct ContentView: View {
                 } footer: {
                     Text("Select all Permission Types you want to Request, once you are Done selecting, press \"Open Sheet\" to open the Permission Sheet")
                 }
+                Toggle("Skip if already Granted", isOn: $skipGranted)
             }
             .safeAreaInset(edge: .bottom) {
                 Button(action: {
@@ -94,7 +99,7 @@ struct ContentView: View {
                 .padding()
                 .disabled(selectedStates.isEmpty)
             }
-            .permissionsSheet(isPresented: $showSheet, permissions: selectedStates)
+            .permissionsSheet(isPresented: $showSheet, skipGranted: skipGranted, permissions: selectedStates)
         }
         .navigationViewStyle(.stack)
         .background(.ultraThinMaterial)
@@ -111,7 +116,7 @@ struct ContentView: View {
                 isRefreshing = true
             }
             try? await Task.sleep(nanoseconds: 1_000_000_000)
-            permissionStates = await permissionsManager.getPermissionStates(for: Set(PermissionType.allCases))
+            permissionStates = await permissionsManager.getPermissionStates(for: Set(allPermissions))
             withAnimation {
                 isRefreshing = false
             }
