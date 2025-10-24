@@ -19,6 +19,8 @@ struct ContentView: View {
     @State var showSheet = false
     @State var isRefreshing = false
     @AppStorage("skipGranted") var skipGranted = false
+    @AppStorage("allowManualSkip") var allowManualSkip = true
+
     var body: some View {
         NavigationView {
             List {
@@ -82,6 +84,7 @@ struct ContentView: View {
                     Text("Select all Permission Types you want to Request, once you are Done selecting, press \"Open Sheet\" to open the Permission Sheet")
                 }
                 Toggle("Skip if already Granted", isOn: $skipGranted)
+                Toggle("Allow User to Skip Permission", isOn: $allowManualSkip)
             }
             .safeAreaInset(edge: .bottom) {
                 Button(action: {
@@ -99,7 +102,7 @@ struct ContentView: View {
                 .padding()
                 .disabled(selectedStates.isEmpty)
             }
-            .permissionsSheet(isPresented: $showSheet, skipGranted: skipGranted, permissions: selectedStates)
+            .permissionsSheet(isPresented: $showSheet, skipAlreadyGranted: skipGranted, allowManualSkip: allowManualSkip, permissions: selectedStates)
         }
         .navigationViewStyle(.stack)
         .background(.ultraThinMaterial)
